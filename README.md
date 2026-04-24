@@ -1,2 +1,2 @@
-# Ore-gemestones.ksu.sci.Y
+# Ore-gemestones
 Interactive Minerals Website for geology students
