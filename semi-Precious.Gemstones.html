@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semi-Precious Gemstones</title>
+
+<style>
+
+/* ===== أساس الصفحة ===== */
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f5fbff;
+}
+
+/* ===== عناوين ===== */
+.title{
+    text-align:center;
+    margin:20px;
+    font-size:26px;
+    color:#0077b6;
+}
+
+/* ===== الهيرو (الرئيسية فقط لو موجود) ===== */
+.hero{
+    height:200px;
+    background:url("images/bg.jpg") no-repeat center;
+    background-size:cover;
+    animation:zoomBg 10s infinite alternate;
+}
+
+@keyframes zoomBg{
+    from{background-size:100%;}
+    to{background-size:110%;}
+}
+
+/* ===== البحث ===== */
+.search-box{
+    text-align:center;
+    margin:20px;
+}
+
+.search-box input{
+    width:60%;
+    padding:10px;
+    font-size:16px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+/* ===== اقتراحات البحث ===== */
+.suggestions{
+    width:60%;
+    margin:auto;
+    background:white;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    display:none;
+}
+
+.suggestions div{
+    padding:10px;
+    cursor:pointer;
+}
+
+.suggestions div:hover{
+    background:#eee;
+}
+
+/* ===== الكونتينر ===== */
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+/* ===== الكروت ===== */
+.card{
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+    /* animation */
+    opacity:0;
+    transform:translateY(30px);
+    animation:fadeUp 0.6s ease forwards;
+}
+
+/* تأخير دخول */
+.card:nth-child(1){animation-delay:0.1s;}
+.card:nth-child(2){animation-delay:0.2s;}
+.card:nth-child(3){animation-delay:0.3s;}
+.card:nth-child(4){animation-delay:0.4s;}
+.card:nth-child(5){animation-delay:0.5s;}
+.card:nth-child(6){animation-delay:0.6s;}
+
+/* حركة الظهور */
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Hover */
+.card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Click */
+.card:active{
+    transform:scale(0.95);
+}
+
+/* ===== زر الرجوع ===== */
+.back-btn{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    padding:12px 25px;
+    font-size:16px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    z-index:1000;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    transform:translateX(-50%) scale(1.1);
+    background:#005f87;
+}
+
+/* ===== موبايل ===== */
+@media(max-width:768px){
+    .search-box input,
+    .suggestions{
+        width:90%;
+    }
+
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        height:150px;
+    }
+}
+body{margin:0;font-family:Arial;background:#f5fbff;}
+
+.title{text-align:center;margin:20px;font-size:26px;color:#0077b6;}
+
+.search{
+text-align:center;margin:15px;
+}
+.search input{
+width:60%;padding:10px;font-size:16px;border-radius:8px;border:1px solid #ccc;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;padding:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+text-align:center;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{transform:scale(1.05);}
+
+@media(max-width:768px){
+.search input{width:90%;}
+}
+.back-btn{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    
+    padding:12px 25px;
+    font-size:16px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    z-index:1000;
+}
+
+.back-btn:hover{
+    background:#005f87;
+}
+</style>
+</head>
+
+<body>
+<button onclick="goBack()" class="back-btn">⬅ Back</button>
+<div class="title">Semi-Precious Gemstones</div>
+
+<div class="search">
+<input type="text" id="searchBox" placeholder="Search..." onkeyup="searchMinerals()">
+</div>
+
+<div class="container">
+
+<div class="card" onclick="go('amethyst.html')">Amethyst</div>
+<div class="card" onclick="go('azurite.html')">Azurite</div>
+<div class="card" onclick="go('clear-quartz.html')">Clear Quartz</div>
+<div class="card" onclick="go('fluorite.html')">Fluorite</div>
+<div class="card" onclick="go('garnet.html')">Garnet</div>
+<div class="card" onclick="go('malachite.html')">Malachite</div>
+<div class="card" onclick="go('rose-quartz.html')">Rose Quartz</div>
+<div class="card" onclick="go('smoky-quartz.html')">Smoky Quartz</div>
+<div class="card" onclick="go('topaz.html')">Topaz</div>
+<div class="card" onclick="go('tourmaline.html')">Tourmaline</div>
+<div class="card" onclick="go('zircon.html')">Zircon</div>
+
+</div>
+
+<script>
+function go(page){window.location.href=page;}
+
+function searchMinerals(){
+let input=document.getElementById("searchBox").value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+let text=card.innerText.toLowerCase();
+card.style.display=text.includes(input)?"block":"none";
+});
+}
+</script>
+<script>
+function goBack(){
+    window.history.back();
+}
+</script>
+</body>
+</html>

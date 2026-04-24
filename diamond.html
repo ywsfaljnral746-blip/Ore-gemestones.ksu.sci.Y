@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amethyst</title>
+
+<style>
+.mineral-img{
+    width:100%;
+    max-width:400px;
+    cursor:pointer;
+    border-radius:10px;
+}
+
+#imgBox{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+
+#imgBox img{
+    max-width:90%;
+    max-height:90%;
+}
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f5fbff;
+}
+
+/* ===== Layout ===== */
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    padding:30px;
+}
+
+/* ===== Text ===== */
+.text{
+    width:55%;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    text-align:left;
+}
+
+.text h1{
+    margin-top:0;
+}
+
+.text p{
+    font-size:18px;
+    margin:6px 0;
+}
+
+/* ===== Image ===== */
+.image{
+    width:45%;
+    text-align:center;
+}
+
+.image img{
+    width:100%;
+    max-width:500px;
+    border-radius:15px;
+    cursor:pointer;
+}
+
+/* ===== Mobile ===== */
+@media (max-width:768px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .text{
+        width:100%;
+        font-size:20px;
+    }
+
+    .text p{
+        font-size:18px;
+    }
+
+    .image{
+        width:100%;
+    }
+
+    .image img{
+        max-width:100%;
+    }
+}
+.back-btn{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    
+    padding:12px 25px;
+    font-size:16px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    z-index:1000;
+}
+
+.back-btn:hover{
+    background:#005f87;
+}
+</style>
+
+</head>
+
+<body>
+<button onclick="goBack()" class="back-btn">⬅ Back</button>
+<div class="container">
+
+    <!-- ===== Text (Left) ===== -->
+    <div class="text">
+
+        <h1>    Diamond  </h1>
+
+        <p><b>Chemical Composition:</b> C   </p>
+        <p><b>Group:</b>  Native elements   </p>
+        <p><b>Crystal System:</b>    Isometric (Cubic) </p>
+
+        <h3>Physical Properties</h3>
+
+        <p><b>Color:</b>    Colorless (also yellow, brown, blue)     </p>
+        <p><b>Transparency:</b>    Transparent   </p>
+        <p><b>Luster:</b>  Adamantine      </p>
+        <p><b>Hardness:</b>   10   </p>
+        <p><b>Streak:</b>    None   </p>
+        <p><b>Cleavage/Fracture:</b> Perfect octahedral cleavage / conchoidal fracture  </p>
+        <p><b>Crystal Form:</b>   Octahedral crystals    </p>
+        <p><b>Specific Gravity:</b>    3.5  </p>
+        <p><b>Locality:</b> South Africa, Botswana, Russia    </p>
+
+    <!-- ===== Image (Right) ===== -->
+    <div class="image">
+       <img src="images/Diamond.jpg" class="mineral-img" onclick="openImage(this.src)">
+
+</div>
+<script>
+function goBack(){
+    window.history.back();
+}
+</script>
+<div id="imgBox" onclick="closeImage()">
+    <img id="fullImg">
+</div>
+<script>
+function openImage(src){
+    document.getElementById("imgBox").style.display="flex";
+    document.getElementById("fullImg").src=src;
+}
+
+function closeImage(){
+    document.getElementById("imgBox").style.display="none";
+}
+</script>
+</body>
+</html>

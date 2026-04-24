@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemstones</title>
+
+<style>
+
+/* ===== الكروت الأساسية ===== */
+.card{
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+    /* Animation دخول */
+    opacity:0;
+    transform:translateY(30px);
+    animation:fadeUp 0.6s ease forwards;
+}
+
+/* تأخير بسيط لكل كارت */
+.card:nth-child(1){animation-delay:0.1s;}
+.card:nth-child(2){animation-delay:0.2s;}
+.card:nth-child(3){animation-delay:0.3s;}
+.card:nth-child(4){animation-delay:0.4s;}
+.card:nth-child(5){animation-delay:0.5s;}
+.card:nth-child(6){animation-delay:0.6s;}
+
+/* حركة الدخول */
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ===== Hover احترافي ===== */
+.card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== تأثير الضغط ===== */
+.card:active{
+    transform:scale(0.95);
+}
+
+/* ===== الخلفية المتحركة ===== */
+.hero{
+    height:200px;
+    background:url("images/bg.jpg") no-repeat center;
+    background-size:cover;
+    animation:zoomBg 10s infinite alternate;
+}
+
+@keyframes zoomBg{
+    from{background-size:100%;}
+    to{background-size:110%;}
+}
+
+/* ===== زرار الرجوع ===== */
+.back-btn{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    
+    padding:12px 25px;
+    font-size:16px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    z-index:1000;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    transform:translateX(-50%) scale(1.1);
+    background:#005f87;
+}
+body{margin:0;font-family:Arial;background:#f5fbff;}
+
+/* header */
+.header{
+display:flex;justify-content:space-between;align-items:center;
+padding:15px;background:#d6f3ff;
+}
+.header-text p{margin:2px 0;font-size:14px;}
+.header img{width:90px;}
+
+/* title */
+.title{text-align:center;font-size:28px;margin:15px;color:#0077b6;font-weight:bold;}
+
+/* search */
+.search-box{text-align:center;margin:20px;}
+.search-box input{
+width:60%;padding:10px;font-size:16px;border-radius:8px;border:1px solid #ccc;
+}
+
+/* suggestions */
+.suggestions{
+width:60%;margin:auto;background:white;border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);display:none;
+}
+.suggestions div{
+padding:10px;cursor:pointer;
+}
+.suggestions div:hover{background:#eee;}
+
+/* cards */
+.container{
+display:grid;grid-template-columns:repeat(2,1fr);
+gap:20px;padding:20px;
+}
+.card{
+background:white;padding:30px;text-align:center;border-radius:10px;
+cursor:pointer;box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* credits */
+.credits{text-align:center;padding:15px;font-size:14px;}
+
+/* mobile */
+@media(max-width:768px){
+.header{flex-direction:column;text-align:center;}
+.search-box input{width:90%;}
+.suggestions{width:90%;}
+.container{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<div class="header-text">
+<h3>Kafr El-Sheikh University</h3>
+<p>Faculty of Science</p>
+<p>Department of Petroleum Geology and Mineral Exploration</p>
+</div>
+<img src="images/logo.png">
+</div>
+
+<div class="title">Radioactive Ores & Gemstones</div>
+
+<div class="search-box">
+<input type="text" id="search" placeholder="Search minerals..." onkeyup="searchMineral()">
+<div id="suggestions" class="suggestions"></div>
+</div>
+
+<div class="container">
+<div class="card" onclick="go('Precious.Gemstones.html')">  Precious</div>
+<div class="card" onclick="go('semi-Precious.Gemstones.html')">  Semi-Precious</div>
+</div>
+
+<div class="credits">
+Designed by: <b>Youssef Elgendy</b> & <b>Mohamed Ibrahim El-Saeidy</b><br>
+Under supervision of: <b>Dr. Saif El-Din Mohamed Abu Khashaba</b>
+</div>
+
+<script>
+function go(p){window.location=p;}
+
+let minerals={
+"Diamond":"diamond.html",
+"Ruby":"ruby.html",
+"Sapphire":"sapphire.html",
+"Emerald":"emerald.html",
+"Amethyst":"amethyst.html",
+"Azurite":"azurite.html",
+"Clear Quartz":"clear-quartz.html",
+"Fluorite":"fluorite.html",
+"Garnet":"garnet.html",
+"Malachite":"malachite.html",
+"Rose Quartz":"rose-quartz.html",
+"Smoky Quartz":"smoky-quartz.html",
+"Topaz":"topaz.html",
+"Tourmaline":"tourmaline.html",
+"Zircon":"zircon.html"
+};
+
+function searchMineral(){
+let input=document.getElementById("search").value.toLowerCase();
+let box=document.getElementById("suggestions");
+box.innerHTML="";
+
+if(input===""){box.style.display="none";return;}
+
+Object.keys(minerals).forEach(name=>{
+if(name.toLowerCase().startsWith(input)){
+
+let div=document.createElement("div");
+div.innerText=name;
+
+div.onclick=()=>{
+go(minerals[name]);
+};
+
+box.appendChild(div);
+}
+});
+
+box.style.display="block";
+}
+</script>
+
+</body>
+</html>
