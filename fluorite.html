@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Amethyst</title>
+<title>Fluorite</title>
 
 <style>
 .mineral-img{
@@ -120,14 +120,60 @@ body{
 .back-btn:hover{
     background:#005f87;
 }
-$darkModeCSS
+/* ===== Dark Mode ===== */
+body.dark-mode {
+    background: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .text {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .text h1 {
+    color: #bb86fc;
+}
+
+body.dark-mode .image img {
+    border: 2px solid #bb86fc;
+}
+
+/* ===== Dark Mode Toggle Button ===== */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background: #005f87;
+}
+
+body.dark-mode #theme-toggle {
+    background: #bb86fc;
+}
+
+body.dark-mode #theme-toggle:hover {
+    background: #9c4dcc;
+}
 </style>
 
 </head>
 
 <body>
 <button onclick="goBack()" class="back-btn">⬅ Back</button>
-<button onclick="toggleTheme()" class="dark-mode-btn" id="themeBtn">🌙 Dark Mode</button>
+<button id="theme-toggle" onclick="toggleTheme()">🌙</button>
 <div class="container">
 
     <!-- ===== Text (Left) ===== -->
@@ -181,24 +227,24 @@ function closeImage(){
 // Dark Mode Toggle
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
-    const btn = document.getElementById('themeBtn');
+    const button = document.getElementById('theme-toggle');
     if (document.body.classList.contains('dark-mode')) {
-        btn.textContent = '☀️ Light Mode';
+        button.innerText = '☀️';
         localStorage.setItem('theme', 'dark');
     } else {
-        btn.textContent = '🌙 Dark Mode';
+        button.innerText = '🌙';
         localStorage.setItem('theme', 'light');
     }
 }
 
-// Load saved theme preference
-window.addEventListener('DOMContentLoaded', function() {
+// Load theme on page load
+window.onload = function() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
-        document.getElementById('themeBtn').textContent = '☀️ Light Mode';
+        document.getElementById('theme-toggle').innerText = '☀️';
     }
-});
+};
 </script>
 </body>
 </html>

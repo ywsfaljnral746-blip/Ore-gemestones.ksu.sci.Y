@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Diamond</title>
+<title>Aventuline</title>
 
 <style>
 .mineral-img{
@@ -120,6 +120,7 @@ body{
 .back-btn:hover{
     background:#005f87;
 }
+
 /* ===== Dark Mode ===== */
 body.dark-mode {
     background: #121212;
@@ -179,27 +180,29 @@ body.dark-mode #theme-toggle:hover {
     <!-- ===== Text (Left) ===== -->
     <div class="text">
 
-        <h1>    Diamond  </h1>
+          <h1>  Aventuline   </h1>
 
-        <p><b>Chemical Composition:</b> C   </p>
-        <p><b>Group:</b>  Native elements   </p>
-        <p><b>Crystal System:</b>    Isometric (Cubic) </p>
+        <p><b>Chemical Composition:</b> SiO₂   </p>
+        <p><b>Group:</b>    Silicates (Tectosilicates)  </p>
+        <p><b>Crystal System:</b>    Trigonal  </p>
 
         <h3>Physical Properties</h3>
 
-        <p><b>Color:</b>    Colorless (also yellow, brown, blue)     </p>
-        <p><b>Transparency:</b>    Transparent   </p>
-        <p><b>Luster:</b>  Adamantine      </p>
-        <p><b>Hardness:</b>   10   </p>
-        <p><b>Streak:</b>    None   </p>
-        <p><b>Cleavage/Fracture:</b> Perfect octahedral cleavage / conchoidal fracture  </p>
-        <p><b>Crystal Form:</b>   Octahedral crystals    </p>
-        <p><b>Specific Gravity:</b>    3.5  </p>
-        <p><b>Locality:</b> South Africa, Botswana, Russia    </p>
+        <p><b>Color:</b>  Apple green   </p>
+        <p><b>Transparency:</b>  Translucent   </p>
+        <p><b>Luster:</b>     Vitreous   </p>
+        <p><b>Hardness:</b> 7     </p>
+        <p><b>Streak:</b>    White   </p>
+        <p><b>Cleavage/Fracture:</b>   No cleavage, conchoidal fracture  </p>
+        <p><b>Crystal Form:</b> Massive     </p>
+        <p><b>Specific Gravity:</b> 2.64–2.69  </p>
+        <p><b>Locality:</b> India, Brazil, Russia, Tanzania </p>
+
+    </div>
 
     <!-- ===== Image (Right) ===== -->
     <div class="image">
-       <img src="images/Diamond.jpg" class="mineral-img" onclick="openImage(this.src)">
+       <img src="images/Aventurine.jpg" class="mineral-img" onclick="openImage(this.src)">
 
 </div>
 <script>
@@ -219,10 +222,7 @@ function openImage(src){
 function closeImage(){
     document.getElementById("imgBox").style.display="none";
 }
-</script>
-<script>
 
-// Dark Mode Toggle
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const button = document.getElementById('theme-toggle');
@@ -246,4 +246,3 @@ window.onload = function() {
 </script>
 </body>
 </html>
-
